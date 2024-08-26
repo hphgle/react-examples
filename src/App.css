@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.form {
+  align-self: center;
+  width: 100%;
+  max-width: 455px;
+  display: flex;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.todo-list {
+  width: 97%;
+  max-width: 455px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 27px;
+  margin-bottom: 27px;
+  gap: 27px;
+}
+
+.todo-task {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 455px;
+  font-size: 16px;
+  color: #0d0d0d;
+  padding: 12px;
+}
+
+.input {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 455px;
+  font-size: 16px;
+  color: #0d0d0d;
+  padding: 12px;
+}
