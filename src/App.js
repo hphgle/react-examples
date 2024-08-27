@@ -17,15 +17,20 @@ function App() {
   };
 
   const checkTask = (index) => {
-    const newTasks = tasks.map((task, i) => 
+    const newList = tasks.map((task, i) => 
     i === index ? {...task, isCompleted: !task.isCompleted}: task);
-    setTasks(newTasks);
+    setTasks(newList);
+  };
+  
+  const deleteTask = (index) => {
+    const newList = tasks.filter((_, i) => i !== index);
+    setTasks(newList);
   };
 
   return (
     <div className='wrapper'>
-      <TaskInput addTask={addTask}/>
-      <TodoList tasks={tasks} checkTask={checkTask}/>
+      <TaskInput addTask={addTask} deleteTask={deleteTask}/>
+      <TodoList tasks={tasks} checkTask={checkTask} deleteTask={deleteTask}/>
     </div>
   );
 }
