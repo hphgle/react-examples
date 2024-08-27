@@ -27,10 +27,16 @@ function App() {
     setTasks(newList);
   };
 
+  const editTask = (index, newName) => {
+    const newList = tasks.map((task, i) => 
+      i === index ? {...task, taskName: newName}: task);
+    setTasks(newList);
+  }
+
   return (
     <div className='wrapper'>
-      <TaskInput addTask={addTask} deleteTask={deleteTask}/>
-      <TodoList tasks={tasks} checkTask={checkTask} deleteTask={deleteTask}/>
+      <TaskInput addTask={addTask} deleteTask={deleteTask} editTask={editTask}/>
+      <TodoList tasks={tasks} checkTask={checkTask} deleteTask={deleteTask} editTask={editTask}/>
     </div>
   );
 }
