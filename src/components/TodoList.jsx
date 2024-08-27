@@ -1,27 +1,31 @@
 import "../App.css";
 import { useState } from "react";
-function TodoList({ tasks }) {
-    return <ul className="todo-list">
-    {tasks != null && tasks.length > 0 ? ( 
-        tasks?.map((task, index) =>
-            <Task key={index} task={task} setTasks={tasks}/>
-        )) : (
-            <p>No task</p>
-        )}
-    </ul>
+function TodoList({ tasks, checkTask }) {
+    return (
+        <ul className="todo-list">
+            {tasks != null && tasks.length > 0 ? (
+                tasks.map((task, index) => (
+                    <li key={index} className="todo-item">
+                        <Task task={task} index={index} setTasks={tasks} checkTask={checkTask}/>
+                    </li>
+                ))
+            ) : (
+                <p>No task</p>
+            )}
+        </ul>
+    );
 }
 
-function Task({ task }) {
-    const [isCompleted, setIsCompleted] = useState(false);
-    const handleChange = (event) => {
-        setIsCompleted(!isCompleted);
+function Task({ task, index, checkTask }) {
+    const handleChange = () => {
+        checkTask(index);
     };
     return (
-        <li className="todo-task">
-            <input type="checkbox" checked={isCompleted} onChange={handleChange}></input>
-            <p>{task.taskName}</p>
+        <div className="todo-task">
+            <input type="checkbox" checked={task.isCompleted} onChange={handleChange}></input>
+            {task.taskName}
             <button>Delete</button>
-        </li>
+        </div>
     )
 }
 

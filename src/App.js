@@ -10,10 +10,22 @@ function App() {
     {taskName: "Meeting 1", isCompleted: false},
     {taskName: "Meeting 2", isCompleted: true}
   ]);
+
+  const addTask = (taskName) => {
+    const newTask = {taskName, isCompleted: false};
+    setTasks([...tasks, newTask]);
+  };
+
+  const checkTask = (index) => {
+    const newTasks = tasks.map((task, i) => 
+    i === index ? {...task, isCompleted: !task.isCompleted}: task);
+    setTasks(newTasks);
+  };
+
   return (
     <div className='wrapper'>
-      <TaskInput />
-      <TodoList tasks={[tasks]}/>
+      <TaskInput addTask={addTask}/>
+      <TodoList tasks={tasks} checkTask={checkTask}/>
     </div>
   );
 }
